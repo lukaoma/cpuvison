@@ -24,3 +24,4 @@ yarn-error.log*
 /.cache/
 /Webapp/node_modules/
 /Webapp/.cache/
+/Webapp/.firebase/
