@@ -6,10 +6,14 @@ import third from './images/3.jpg'
 import fourth from './images/4.jpg'
 import fifth from './images/5.jpg'
 import sixth from './images/6.jpg'
+import fav from './images/icon.png'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Favicon from "react-favicon";
 
 const base: string = 'HTTPs://pixabay.com/api/';
 const login: string = "14273844-f456c7ec834d57f01df684ee6";
+
 
 export interface singleItem {
     id: string,
@@ -90,12 +94,14 @@ export default function App() {
 
     return (
         <div className={"back"}>
+            <Favicon url={fav}/>
             <h1>Welcome To Our Project for Computer Vision</h1>
             <h4>All images are free of CopyRight</h4>
             <h6>You can copy, modify, distribute, and use the images, even for
                 commercial purposes, all without asking for permission or giving
                 credits to the artist. However, depicted content may still be protected by trademarks,
-                publicity or privacy rights.<a href="https://pixabay.com/service/faq/"> Pixabay 2019</a></h6>
+                publicity or privacy rights.<a href="https://pixabay.com/service/faq/"> Pixabay 2019</a>
+            </h6>
             <h4>Larry Ukaoma & Lu Jin</h4>
             <div>
                 <h1 ref={score}>
