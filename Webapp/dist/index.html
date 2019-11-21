@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="/8569db430312f2823e8fde8f992ee959.png" rel="shortcut icon">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <title>CPU Vision</title>
+    <script defer="defer" src="/4dabb92bd300f7ac92b4933a13f7ab7d.js"></script>
+    <script defer="defer" src="/fbbe5b3c73f5527eeff24dd32d1c548a.js"></script>
+    <script defer="defer" src="/e43f4b0e24f0e92e0d14c53298bb13b7.js"></script>
+    <script defer="defer" src="/24381df8cc34c5cbdbe0d17fed6a1244.js"></script>
+    <script defer="defer" src="/1f06e7ba2fb7d79bf0da8a180ff07217.js"></script>
+    <script defer="defer" src="/0e76c1e84a216a0c4af98ed6c0d1168e.js"></script>
+    <style media="screen">body {
+        background: #eceff1;
+        color: rgba(0, 0, 0, .87);
+        font-family: Roboto, Helvetica, Arial, sans-serif;
+        margin: 0;
+        padding: 0
+    }
+
+    #message {
+        background: #fff;
+        max-width: 360px;
+        margin: 100px auto 16px;
+        padding: 32px 24px;
+        border-radius: 3px
+    }
+
+    #message h2 {
+        color: #ffa100;
+        font-weight: 700;
+        font-size: 16px;
+        margin: 0 0 8px
+    }
+
+    #message h1 {
+        font-size: 22px;
+        font-weight: 300;
+        color: rgba(0, 0, 0, .6);
+        margin: 0 0 16px
+    }
+
+    #message p {
+        line-height: 140%;
+        margin: 16px 0 24px;
+        font-size: 14px
+    }
+
+    #message a {
+        display: block;
+        text-align: center;
+        background: #039be5;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #fff;
+        padding: 16px;
+        border-radius: 4px
+    }
+
+    #message, #message a {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24)
+    }
+
+    #load {
+        color: rgba(0, 0, 0, .4);
+        text-align: center;
+        font-size: 13px
+    }
+
+    @media (max-width: 600px) {
+        #message, body {
+            margin-top: 0;
+            background: #fff;
+            box-shadow: none
+        }
+
+        body {
+            border-top: 16px solid #ffa100
+        }
+    }</style>
+    <link href="/5856ba42de1555023479c6305c85f5fc.css" rel="stylesheet">
+    <link href="/f90da966c9f38ada1a94cb32aef8c5d3.css" rel="stylesheet">
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<h1>HELP</h1>
+<div id="root"></div>
+<script src="/4dabb92bd300f7ac92b4933a13f7ab7d.js"></script>
+<script src="/0e76c1e84a216a0c4af98ed6c0d1168e.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+    // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    // // The Firebase SDK is initialized and available here!
+    //
+    // firebase.auth().onAuthStateChanged(user => { });
+    // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+    // firebase.messaging().requestPermission().then(() => { });
+    // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+    //
+    // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    try {
+        let app = firebase.app();
+        let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+        document.getElementById('load').innerHTML = "Firebase SDK loaded with ".concat(features.join(', '));
+    } catch (e) {
+        console.error(e);
+        document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+    }
+});</script>
+<script>!function (a) {
+    function e(e) {
+        for (var t, r, n = e[0], o = e[1], u = e[2], p = 0, l = []; p < n.length; p++) r = n[p], Object.prototype.hasOwnProperty.call(i, r) && i[r] && l.push(i[r][0]), i[r] = 0;
+
+        for (t in o) Object.prototype.hasOwnProperty.call(o, t) && (a[t] = o[t]);
+
+        for (s && s(e); l.length;) l.shift()();
+
+        return c.push.apply(c, u || []), f();
+    }
+
+    function f() {
+        for (var e, t = 0; t < c.length; t++) {
+            for (var r = c[t], n = !0, o = 1; o < r.length; o++) {
+                var u = r[o];
+                0 !== i[u] && (n = !1);
+            }
+
+            n && (c.splice(t--, 1), e = p(p.s = r[0]));
+        }
+
+        return e;
+    }
+
+    var r = {},
+        i = {
+            1: 0
+        },
+        c = [];
+
+    function p(e) {
+        if (r[e]) return r[e].exports;
+        var t = r[e] = {
+            i: e,
+            l: !1,
+            exports: {}
+        };
+        return a[e].call(t.exports, t, t.exports, p), t.l = !0, t.exports;
+    }
+
+    p.m = a, p.c = r, p.d = function (e, t, r) {
+        p.o(e, t) || Object.defineProperty(e, t, {
+            enumerable: !0,
+            get: r
+        });
+    }, p.r = function (e) {
+        "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
+            value: "Module"
+        }), Object.defineProperty(e, "__esModule", {
+            value: !0
+        });
+    }, p.t = function (t, e) {
+        if (1 & e && (t = p(t)), 8 & e) return t;
+        if (4 & e && "object" == typeof t && t && t.__esModule) return t;
+        var r = Object.create(null);
+        if (p.r(r), Object.defineProperty(r, "default", {
+            enumerable: !0,
+            value: t
+        }), 2 & e && "string" != typeof t) for (var n in t) p.d(r, n, function (e) {
+            return t[e];
+        }.bind(null, n));
+        return r;
+    }, p.n = function (e) {
+        var t = e && e.__esModule ? function () {
+            return e.default;
+        } : function () {
+            return e;
+        };
+        return p.d(t, "a", t), t;
+    }, p.o = function (e, t) {
+        return Object.prototype.hasOwnProperty.call(e, t);
+    }, p.p = "/";
+    var t = this.webpackJsonptypeapp = this.webpackJsonptypeapp || [],
+        n = t.push.bind(t);
+    t.push = e, t = t.slice();
+
+    for (var o = 0; o < t.length; o++) e(t[o]);
+
+    var s = n;
+    f();
+}([]);</script>
+<script src="/3edc683535edef875bf8bdbb1a6198cc.js"></script>
+<script src="/19dc8c31856dbba351115e2d158258e0.js"></script>
+</body>
+</html>
