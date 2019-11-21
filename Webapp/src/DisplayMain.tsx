@@ -15,7 +15,7 @@ export default function DisplayMain(props: any) {
         let loop: number = 50;
         // not doing what i think
         loop = 50;
-        while( (next1 === next2) && loop) {
+        while ((next1 === next2) && loop) {
             next2 = getRandomInt(max);
             loop--;
         }
@@ -33,16 +33,20 @@ export default function DisplayMain(props: any) {
     return (
         <table>
             <div className="singleBox">
-            <tr>
-                <td><div className="mainBox">
-                    <img className={"img"} src={img1} alt="##"/>
-                    <Selection buttonRef={props.buttonRef1}/>
-                </div></td>
-                <td> <div className="mainBox">
-                    <img className={"img"} src={img2} alt="##"/>
-                    <Selection buttonRef={props.buttonRef2}/>
-                </div></td>
-            </tr>
+                <tr>
+                    <td>
+                        <div className="mainBox">
+                            <img className={"img"} src={img1} alt="##"/>
+                            <Selection buttonRef={props.buttonRef1}/>
+                        </div>
+                    </td>
+                    <td>
+                        <div className="mainBox">
+                            <img className={"img"} src={img2} alt="##"/>
+                            <Selection buttonRef={props.buttonRef2}/>
+                        </div>
+                    </td>
+                </tr>
             </div>
         </table>
     )

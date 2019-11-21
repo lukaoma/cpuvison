@@ -53,12 +53,17 @@ export default function App() {
             })
         }
     };
-
     useEffect(() => {
         const oldScore: string = localStorage.getItem(SSD) as string;
         if (parseInt(oldScore))
             setOnScreen(parseInt(oldScore));
-        getImages("abstract art").then(r => {});
+        const getImage = async (typeOfImages: string) => {
+            typeOfImages = typeOfImages.replace(" ", "+").toLowerCase();
+            const response = await fetch(`${base}?key=${login}&q=${typeOfImages}`);
+            const myJson = await response.json();
+            parseImageBay(myJson);
+        };
+        getImage("abstract art").then();
         setImageArray(old => {
             return [first, second, third, fourth, fifth, sixth];
         })
@@ -89,7 +94,8 @@ export default function App() {
 
     const switchGenre = () => {
         const element: any = document.getElementById("selectGenre") as HTMLInputElement;
-        getImages(element.options[element.selectedIndex].value).then(r => {});
+        getImages(element.options[element.selectedIndex].value).then(r => {
+        });
     };
 
     return (
