@@ -10,8 +10,8 @@ function Where(props: any) {
     return (
         <Router>
             <Favicon url={fav}/>
-            <Route path='/' exact component={App}/>
-            <Route path='/form' exact component={formCollect}/>
+            <Route path='/' exact component={formCollect}/>
+            <Route path='/app' exact component={App}/>
         </Router>
     );
 }
