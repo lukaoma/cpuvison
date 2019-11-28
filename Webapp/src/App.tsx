@@ -75,7 +75,7 @@ export default function App() {
             buttonRef1.current.checked = false;
             buttonRef2.current.checked = false;
             crowdWork[nameCate] = (crowdWork[nameCate] === undefined) ? 1 : crowdWork[nameCate] + 1;
-            if (onScreen >= -1) {
+            if (onScreen >= 9) {
                 crowdWork["GameMode"] = score.current.style.display === "" ? "True" : "False";
                 newUser.Work = crowdWork;
                 router.push("/feedback");

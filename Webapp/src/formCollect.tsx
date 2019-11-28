@@ -32,11 +32,11 @@ export default function FormCollect(props: any) {
         const element =
             <Form.Control as="select" multiple
                           defaultValue={""} ref={FormChoices.current[refIndex]}>
-                <option>5</option>
+                <option>5 Felt More {labels[refIndex]}</option>
                 <option>4</option>
                 <option>3</option>
                 <option>2</option>
-                <option>1</option>
+                <option>1 Felt Less {labels[refIndex]}</option>
             </Form.Control>;
         refIndex++;
         return element;
