@@ -1,30 +1,29 @@
 import React, {useEffect, useRef, useState} from 'react';
 import DisplayMain from './DisplayMain'
-import first from './images/1.jpg'
-import second from './images/2.jpg'
-import third from './images/3.jpg'
-import fourth from './images/4.jpg'
-import fifth from './images/5.jpg'
-import sixth from './images/6.jpg'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {useHistory} from "react-router";
+import {newUser} from "./Where";
 
 const base: string = 'HTTPs://pixabay.com/api/';
 const login: string = "14273844-f456c7ec834d57f01df684ee6";
 
-
-export interface singleItem {
-    id: string,
-    name: string,
-    check: boolean,
+export interface workInformation {
+    [x: string]: any;
 }
 
-const SSD = "ssd";
+let nameCate: string = "";
+
+const crowdWork: workInformation = {};
 
 export default function App() {
+    let router = useHistory();
+
+
     const [imagesAry, setImageArray] = useState(Array<string>());
 
     const getImages = async (typeOfImages: string) => {
+        nameCate = "" + typeOfImages;
         typeOfImages = typeOfImages.replace(" ", "+").toLowerCase();
         const response = await fetch(`${base}?key=${login}&q=${typeOfImages}`);
         const myJson = await response.json();
@@ -52,19 +51,8 @@ export default function App() {
         }
     };
     useEffect(() => {
-        const oldScore: string = localStorage.getItem(SSD) as string;
-        if (parseInt(oldScore))
-            setOnScreen(parseInt(oldScore));
-        const getImage = async (typeOfImages: string) => {
-            typeOfImages = typeOfImages.replace(" ", "+").toLowerCase();
-            const response = await fetch(`${base}?key=${login}&q=${typeOfImages}`);
-            const myJson = await response.json();
-            parseImageBay(myJson);
-        };
-        getImage("abstract art").then();
-        setImageArray(old => {
-            return [first, second, third, fourth, fifth, sixth];
-        })
+        setOnScreen(0);
+        getImages("Abstract").then();
     }, []);
 
     const removeGame = () => {
@@ -82,11 +70,17 @@ export default function App() {
         if (buttonRef1.current.checked || buttonRef2.current.checked) {
             setOnScreen(old => {
                 old++;
-                localStorage.setItem(SSD, String(old));
                 return old;
             });
             buttonRef1.current.checked = false;
             buttonRef2.current.checked = false;
+            crowdWork[nameCate] = (crowdWork[nameCate] === undefined) ? 1 : crowdWork[nameCate] + 1;
+            if (onScreen >= -1) {
+                crowdWork["GameMode"] = score.current.style.display === "" ? "True" : "False";
+                newUser.Work = crowdWork;
+                router.push("/feedback");
+            }
+
         }
     };
 

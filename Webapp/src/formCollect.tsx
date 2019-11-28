@@ -2,6 +2,16 @@ import React, {createRef, useRef} from 'react';
 import {Button, Form} from "react-bootstrap";
 import {useHistory} from "react-router-dom";
 import firebase from "firebase";
+import {newUser} from "./Where";
+
+export interface WorkerFeedback {
+    [x: string]: any;
+}
+
+const MAX_QUESTIONS = 5;
+const feedback: WorkerFeedback = {};
+let refIndex = 0;
+const labels: string[] = ["Purpose", "Challenge", "Immerse", "Rewards", "Feedback"];
 
 export default function FormCollect(props: any) {
     let router = useHistory();
@@ -16,88 +26,70 @@ export default function FormCollect(props: any) {
         appId: "1:1014927434821:web:9d088eab92a4d0401aaf2c"
     };
 
-    let refIndex = 0;
-    const FormChoices: any = useRef([...Array(6)].map(() => createRef()));
-
+    const FormChoices: any = useRef([...Array(MAX_QUESTIONS)].map(() => createRef()));
 
     function getElement() {
-        const element = <Form.Control as="select" ref={FormChoices.current[refIndex]}>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-        </Form.Control>;
+        const element =
+            <Form.Control as="select" multiple
+                          defaultValue={""} ref={FormChoices.current[refIndex]}>
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+            </Form.Control>;
         refIndex++;
         return element;
     }
 
-    interface worker {
-        Purpose: number
-        Challenge: number
-        Immerse: number
-        Rewards: number
-        Feedback: number
-        Name: string
+    function doneFeedBack() {
+        for (let index = 0; index < MAX_QUESTIONS; index++) {
+            const name: string = labels[index];
+            feedback[name] = FormChoices.current[index].current.value === "" ? "No Answer" : FormChoices.current[index].current.value;
+        }
+        newUser.Feedback = feedback;
+        addUser();
     }
 
-    let addUser = (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
+    const addUser = () => {
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
-        const sendData: worker = {
-            Purpose: FormChoices.current[0].current.value,
-            Challenge: FormChoices.current[1].current.value,
-            Immerse: FormChoices.current[2].current.value,
-            Rewards: FormChoices.current[3].current.value,
-            Feedback: FormChoices.current[4].current.value,
-            Name: FormChoices.current[5].current.value,
-        };
         db.settings({
             timestampsInSnapshots: true
         });
-        db.collection("CrowdWorkers").add(sendData).then(r => {
-            router.push("/app");
+        db.collection("CrowdWorkers2").add(newUser).then(r => {
+            router.push("/");
         });
     };
-    const labels: string[] = ["Purpose", "Challenge", "Immerse", "Rewards", "Feedback", "Name"];
+
     return (
         <div className="formBody">
-            <h1>Please Fill out this Form</h1>
+            <h1>Thanks for Working, Please fill out this form</h1>
             <Form className="justForm">
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label column={false}>{labels[0]}</Form.Label>
-                    <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Group controlId="exampleForm.ControlSelect2">
                         {getElement()}
                     </Form.Group>
                     <Form.Text className="text-muted">
                         Please Fill all boxes
                     </Form.Text>
                 </Form.Group>
-                <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Group controlId="exampleForm.ControlSelect2">
                     <Form.Label column={false}>{labels[1]}</Form.Label>
                     {getElement()}                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Group controlId="exampleForm.ControlSelect2">
                     <Form.Label column={false}>{labels[2]}</Form.Label>
                     {getElement()}                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Group controlId="exampleForm.ControlSelect2">
                     <Form.Label column={false}>{labels[3]}</Form.Label>
                     {getElement()}
                 </Form.Group>
-                <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Group controlId="exampleForm.ControlSelect2">
                     <Form.Label column={false}>{labels[4]}</Form.Label>
                     {getElement()}
                 </Form.Group>
-                <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label column={false}>{labels[5]}</Form.Label>
-                    <Form.Control as="textarea" rows="1" ref={FormChoices.current[5]} placeholder="Name"/>
-                </Form.Group>
-                <Button variant="primary" type="submit" onClick={addUser}>
+                <Button variant="primary" type="button" onClick={doneFeedBack}>
                     Submit
                 </Button>
             </Form>
