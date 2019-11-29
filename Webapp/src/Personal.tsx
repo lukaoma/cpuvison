@@ -71,7 +71,7 @@ export default function Personal(props: any) {
     };
 
     const labels: string[] = ["Are you a self-conscious person?",
-        "Are you experimental with what you ware?", "Do you wear Jewelery?", "Are you a frequent art museum goer?",
+        "Are you experimental with what you wear?", "Do you wear Jewelery?", "Are you a frequent art museum goer?",
         "Do you wear makeup?", "Who is your favorite artist?",
         "What is your favorite song?", "Name one hobby of yours."];
 

@@ -102,7 +102,7 @@ export default function App() {
             <h4>Larry Ukaoma & Lu Jin</h4>
             <div>
                 <h1 ref={score}>
-                    Score: {onScreen % 11}
+                    Score: {1 + onScreen % 11}/10
                 </h1>
                 <br/>
                 Art Genre: <select id="selectGenre" onChange={switchGenre}>

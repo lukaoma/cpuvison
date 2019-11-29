@@ -64,7 +64,7 @@ export default function FormCollect(props: any) {
 
     return (
         <div className="formBody">
-            <h1>Thanks for Working, Please fill out this form</h1>
+            <h1>Please, Make an evaluation of the overall interface design.</h1>
             <Form className="justForm">
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label column={false}>{labels[0]}</Form.Label>
