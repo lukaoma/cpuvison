@@ -58,6 +58,7 @@ export default function FormCollect(props: any) {
             timestampsInSnapshots: true
         });
         db.collection("CrowdWorkers2").add(newUser).then(r => {
+            alert("Your Data was Submitted Thank you!!!");
             router.push("/");
         });
     };
